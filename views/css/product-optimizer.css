@@ -1,0 +1,117 @@
+/**
+ * Styles pour l'optimisation des produits du module IaBot
+ */
+
+/* Styles pour la table de sélection des produits */
+.product-selection-table {
+    margin-bottom: 0;
+}
+
+/* Styles pour l'indicateur de qualité SEO */
+.seo-quality-indicator {
+    width: 100%;
+    max-width: 150px;
+}
+
+/* Styles pour le bouton actif */
+.btn-active {
+    background-color: #5bc0de;
+    color: #fff;
+}
+
+/* Styles pour la barre de progression */
+#iabot-progress-container {
+    margin-bottom: 20px;
+}
+
+.progress-message {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Styles pour les détails des produits optimisés */
+.optimized-products-details {
+    margin-top: 20px;
+}
+
+.optimized-products-details .table {
+    margin-bottom: 0;
+}
+
+.optimized-products-details .improvements-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Styles pour les options d'optimisation */
+.optimization-options {
+    padding: 15px;
+}
+
+.optimization-options .form-group {
+    margin-bottom: 20px;
+}
+
+.optimization-options .help-block {
+    font-size: 12px;
+    color: #6c868e;
+}
+
+/* Styles pour les niveaux d'optimisation SEO */
+.seo-level-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.seo-level-indicator .level {
+    width: 10%;
+    text-align: center;
+    font-size: 11px;
+    color: #6c868e;
+}
+
+.seo-level-indicator .level.active {
+    font-weight: bold;
+    color: #25b9d7;
+}
+
+/* Styles pour les messages d'alerte */
+.alert-info {
+    background-color: #dff5f9;
+    border-color: #25b9d7;
+    color: #1e94ab;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
+
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+/* Styles pour les boutons */
+.btn-primary {
+    background-color: #25b9d7;
+    border-color: #25b9d7;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #1e94ab;
+    border-color: #1e94ab;
+}
+
+.btn-danger {
+    background-color: #f54c3e;
+    border-color: #f54c3e;
+}
+
+.btn-danger:hover, .btn-danger:focus {
+    background-color: #e02d1b;
+    border-color: #e02d1b;
+}

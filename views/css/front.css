@@ -1,0 +1,409 @@
+/**
+ * Styles pour le chat IA
+ */
+
+:root {
+    --iabot-primary-color: #0d47a1;
+    --iabot-text-color: #333333;
+    --iabot-bg-color: #ffffff;
+    --iabot-border-color: #e0e0e0;
+    --iabot-bot-message-bg: #f1f5f9;
+    --iabot-user-message-bg: #e3f2fd;
+    --iabot-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --iabot-radius: 12px;
+    --iabot-transition: all 0.3s ease;
+}
+
+/* Conteneur principal du chat */
+#iabot-chat-container {
+    position: fixed;
+    bottom: 80px;
+    width: 350px;
+    height: 500px;
+    background-color: var(--iabot-bg-color);
+    border-radius: var(--iabot-radius);
+    box-shadow: var(--iabot-shadow);
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    overflow: hidden;
+    transition: var(--iabot-transition);
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#iabot-chat-container.iabot-active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Positionnement du chat */
+#iabot-chat-container.iabot-position-right,
+#iabot-chat-bubble.iabot-position-right {
+    right: 20px;
+}
+
+#iabot-chat-container.iabot-position-left,
+#iabot-chat-bubble.iabot-position-left {
+    left: 20px;
+}
+
+/* En-tête du chat */
+#iabot-chat-header {
+    background-color: var(--iabot-primary-color);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.iabot-chat-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.iabot-title-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.iabot-main-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.iabot-subtitle {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.iabot-chat-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Corps du chat */
+#iabot-chat-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+#iabot-messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+/* Messages */
+.iabot-message {
+    display: flex;
+    gap: 8px;
+    max-width: 100%;
+}
+
+.iabot-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.iabot-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.iabot-message-bubble {
+    max-width: calc(100% - 40px);
+}
+
+.iabot-bot-message .iabot-message-content {
+    background-color: var(--iabot-bot-message-bg);
+    border-radius: 16px;
+    border-top-left-radius: 4px;
+    padding: 10px 12px;
+}
+
+.iabot-user-message {
+    flex-direction: row-reverse;
+}
+
+.iabot-user-message .iabot-message-content {
+    background-color: var(--iabot-user-message-bg);
+    border-radius: 16px;
+    border-top-right-radius: 4px;
+    padding: 10px 12px;
+}
+
+.iabot-message-content {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--iabot-text-color);
+}
+
+.iabot-message-time {
+    font-size: 10px;
+    color: #757575;
+    margin-top: 4px;
+    text-align: right;
+}
+
+/* Recommandations de produits */
+#iabot-product-recommendations {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.iabot-recommendations-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--iabot-text-color);
+}
+
+.iabot-recommendations-carousel {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    /* Solution compatible avec tous les navigateurs */
+    /* Utilisation de propriétés standard pour tous les navigateurs */
+    overflow-y: auto;
+    /* Firefox (propriété non standard mais utile pour Firefox) */
+    /* @supports (scrollbar-width: thin) {
+        scrollbar-width: thin;
+    } */
+    /* Webkit (Chrome, Safari, Edge) */
+    &::-webkit-scrollbar {
+        height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+}
+
+.iabot-product-card {
+    min-width: 140px;
+    border: 1px solid var(--iabot-border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--iabot-transition);
+    background-color: white;
+}
+
+.iabot-product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.iabot-product-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.iabot-product-image {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+}
+
+.iabot-product-info {
+    padding: 8px;
+}
+
+.iabot-product-title {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--iabot-text-color);
+    /* Solution multi-navigateurs pour limiter le texte à 2 lignes */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* Propriété standard */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 2.8em;
+}
+
+.iabot-product-price {
+    font-size: 12px;
+    color: var(--iabot-primary-color);
+    font-weight: 600;
+}
+
+.iabot-product-old-price {
+    font-size: 10px;
+    color: #757575;
+    text-decoration: line-through;
+    margin-right: 4px;
+}
+
+/* Pied du chat */
+#iabot-chat-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--iabot-border-color);
+}
+
+.iabot-input-container {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 24px;
+    padding: 4px 8px 4px 16px;
+}
+
+#iabot-message-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--iabot-text-color);
+    outline: none;
+}
+
+#iabot-message-input::placeholder {
+    color: #9e9e9e;
+}
+
+/* Bouton du chat */
+#iabot-chat-bubble {
+    position: fixed;
+    bottom: 20px;
+    z-index: 9998;
+}
+
+#iabot-open-chat-btn {
+    width: 56px;
+    height: 56px;
+    background-color: var(--iabot-primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    box-shadow: var(--iabot-shadow);
+    position: relative;
+    transition: var(--iabot-transition);
+}
+
+#iabot-open-chat-btn:hover {
+    transform: scale(1.05);
+}
+
+.iabot-bubble-pulse {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* Animation de chargement */
+.iabot-typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background-color: var(--iabot-bot-message-bg);
+    border-radius: 12px;
+    width: fit-content;
+    margin-bottom: 8px;
+}
+
+.iabot-typing-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #757575;
+    border-radius: 50%;
+    animation: iabot-typing-animation 1.4s infinite ease-in-out both;
+}
+
+.iabot-typing-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.iabot-typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.iabot-typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes iabot-typing-animation {
+    0%, 80%, 100% { 
+        transform: scale(0.6);
+        opacity: 0.6;
+    }
+    40% { 
+        transform: scale(1.0);
+        opacity: 1;
+    }
+}
+
+/* Utilitaires */
+.iabot-hidden {
+    display: none !important;
+}
+
+.iabot-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    border-radius: 50%;
+    transition: var(--iabot-transition);
+}
+
+.iabot-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    #iabot-chat-container {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+    
+    #iabot-chat-container.iabot-position-left,
+    #iabot-chat-container.iabot-position-right {
+        left: 0;
+        right: 0;
+    }
+    
+    #iabot-chat-bubble {
+        bottom: 10px;
+    }
+}
