@@ -1346,9 +1346,10 @@ class IaBot extends Module implements WidgetInterface
      * Enregistrement d'un hook
      *
      * @param string $hook_name Nom du hook
+     * @param array|null $shop_list Liste des boutiques
      * @return bool
      */
-    public function registerHook($hook_name)
+    public function registerHook($hook_name, $shop_list = null)
     {
         // Vérifier si le nom du hook est valide
         if (!$this->isValidHookName($hook_name)) {
@@ -1357,7 +1358,7 @@ class IaBot extends Module implements WidgetInterface
         
         // Vérifier si la méthode parent existe
         if (method_exists(parent::class, 'registerHook')) {
-            return parent::registerHook($hook_name);
+            return parent::registerHook($hook_name, $shop_list);
         }
         
         // Fallback si la méthode n'existe pas
