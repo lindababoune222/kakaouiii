@@ -1006,19 +1006,20 @@ class IaBot extends Module implements WidgetInterface
      * 
      * @param string $string Chaîne à traduire
      * @param string|bool $specific Module spécifique
+     * @param string|null $locale Locale à utiliser
      * @return string
      */
-    public function l($string, $specific = false)
+    public function l($string, $specific = false, $locale = null)
     {
         // Vérifier si la méthode parent existe
         if (method_exists(parent::class, 'l')) {
-            return parent::l($string, $specific);
+            return parent::l($string, $specific, $locale);
         }
         
         // Fallback si la méthode n'existe pas
         if (class_exists('\Translate')) {
             if (method_exists('\Translate', 'getModuleTranslation')) {
-                return \Translate::getModuleTranslation($this->name, $string, $specific ?: $this->name);
+                return \Translate::getModuleTranslation($this->name, $string, $specific ?: $this->name, $locale);
             }
         }
         
